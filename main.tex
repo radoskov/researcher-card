@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{memoir}
+
+\setstocksize{55mm}{85mm} % UK Stock size
+\setpagecc{55mm}{85mm}{*}
+\settypeblocksize{45mm}{75mm}{*}
+\setulmargins{5mm}{*}{*}
+\setlrmargins{5mm}{*}{*}
+\usepackage{xcolor}
+
+\setheadfoot{0.1pt}{0.1pt}
+\setheaderspaces{1pt}{*}{*}
+\usepackage{fontspec}
+\setmainfont[
+  Path=./,
+  UprightFont = Garamond12-Regular.ttf,
+  ItalicFont  = Garamond12-Italic.ttf,
+  BoldFont = Garamond12-Bold.ttf
+]{Garamond12}
+
+\newcommand{\topic}[1]{\hspace{5mm}\textit{#1}\\}
+\input{personal}
+
+\checkandfixthelayout[fixed]
+
+\pagestyle{empty}
+
+\usepackage{pstricks}
+\usepackage{auto-pst-pdf,pst-barcode}
+
+\begin{document}
+    \begin{Spacing}{0.75}%
+    \noindent
+    \textbf{\TitleBefore~\FirstName~\LastName, \TitleAfter}\\
+    \tiny \hfill {\color{gray}\Group,\\\Department~/ \Institute}\\ 
+    \rule{74mm}{.3mm}\\
+    \begin{minipage}[t]{29mm}
+        \vspace{5mm}%
+        \begin{pspicture}(22mm,22mm)
+            % The MECARD format is used to exchange contact information. More information at:
+            % http://www.nttdocomo.co.jp/english/service/imode/make/content/barcode/function/application/addressbook/index.html
+\psbarcode{MECARD:N:\LastName,\FirstName;URL:\MyURL;EMAIL:\MyEmail;TEL:\Phone;}{eclevel=L width=1 height=1}{qrcode}
+
+        \end{pspicture}
+    \end{minipage}
+    \hspace{-4mm}
+    \begin{minipage}[t]{42mm}
+        \vspace{-0mm}%
+        \begin{flushleft}
+        {\scriptsize
+            \begin{Spacing}{1}%
+            \hspace{1mm}\textbf{{\normalsize \RoleTitle}}\\
+            \ResearchTopics
+            \vspace{2mm}
+            \end{Spacing}
+        }
+        {\tiny
+        	\begin{tabular}{rl}
+            	{\color{gray}web} & \MyURL\\
+            	{\color{gray}email} & \MyEmail\\
+            	{\color{gray}phone} & \Phone \\
+            	\vspace*{1mm} \\
+			{\color{gray}\GroupShort} & \GroupContact \\            	
+            \end{tabular}
+            %\vspace*{2mm}
+        }
+        \end{flushleft}
+    \end{minipage}
+    \rule{74mm}{0mm}\\
+    \end{Spacing}
+\end{document}
