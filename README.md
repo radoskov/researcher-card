@@ -7,7 +7,7 @@ A LaTeX template for a compact academic/researcher business card (85 × 55 mm) f
 | File | Purpose |
 |---|---|
 | `main.tex` | Business card template (XeLaTeX) — layout only, no personal data |
-| `personal.tex` | Your personal details and research topics (gitignored) |
+| `example.personal.tex` | Template file for personal details and research topics |
 | `tile_pdf_a4.py` | Python script to tile the card PDF onto A4 for printing |
 | `Garamond12-*.ttf` | Bundled Garamond 12 font files |
 
@@ -25,7 +25,9 @@ A LaTeX template for a compact academic/researcher business card (85 × 55 mm) f
 
 ### 1. Customize the card
 
-Copy `personal.tex` and fill in your details — this is the only file you need to edit:
+Make a copy of `example.personal.tex`, rename it to `personal.tex`
+(personal.tex is gitignored)
+and fill in your details — this is the only file you need to edit:
 
 ```latex
 \newcommand{\FirstName}{Jane}
